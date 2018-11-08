@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/', 'DashboardController@index')->name('dashboard.index');
-Route::get('/filter-products', 'DashboardController@search')->name('dashboard.search');
+Route::get('/', 'ProductsController@index')->name('products.index');
+Route::get('/filter-products', 'ProductsController@search')->name('products.search');

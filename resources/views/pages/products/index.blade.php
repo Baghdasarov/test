@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('content')
     <div class="col-count-6">
-        @foreach($categories as $key=>$category)
-            <a class="categories-products" href="javascript:;" data-alias="{{$key}}">{{$category}}</a><br/>
+        @foreach($categories as $category)
+            <a class="categories-products" href="javascript:;" data-alias="{{$category->alias}}">{{$category->title}}</a><br/>
         @endforeach
     </div>
     <div class="row">
@@ -24,7 +24,7 @@
                 </tr>
                 </thead>
                 <tbody id="productsResult">
-                    @include('pages.dashboard.products')
+                    @include('pages.products.items')
                 </tbody>
             </table>
         </div>
@@ -48,7 +48,7 @@
                 }
 
                 xhr = $.ajax({
-                    url: "{{route('dashboard.search')}}",
+                    url: "{{route('products.search')}}",
                     method: 'GET',
                     data: {search:value, _token:_token},
                     success: function(data) {
@@ -65,7 +65,7 @@
                 }
 
                 xhr = $.ajax({
-                    url: "{{route('dashboard.search')}}",
+                    url: "{{route('products.search')}}",
                     method: 'GET',
                     data: {category:value, _token:_token},
                     success: function(data) {
